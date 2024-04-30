@@ -177,3 +177,7 @@ _fzf_compgen_dir() {
 }
 
 source $HOME/dotfiles/externals/fzf-git.sh/fzf-git.sh
+
+# ----- Bat (better cat) -----
+
+export BAT_THEME=tokyonight_night
