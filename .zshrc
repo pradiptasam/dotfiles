@@ -201,3 +201,8 @@ _fzf_comprun() {
 # ----- Bat (better cat) -----
 
 export BAT_THEME=tokyonight_night
+
+# ---- Zoxide (better cd) ----
+eval "$(zoxide init zsh)"
+
+alias cd="z"
