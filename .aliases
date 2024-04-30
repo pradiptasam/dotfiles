@@ -1,0 +1,14 @@
+alias lev6="ssh levante6"
+
+alias vim="nvim"
+alias vi="nvim"
+alias lev6="ssh levante6"
+
+# git aliases
+alias gs="git status"
+alias ga="git add"
+alias gl="git log"
+
+alias meld="~/sw/meld/bin/meld"
+
+alias c="clear"
