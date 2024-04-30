@@ -129,3 +129,16 @@ source ~/.aliases
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/Users/k202170/.bin/remote/bin:$PATH"
+
+
+# ---- Eza (better ls) -----
+
+alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias ld="eza -lD"
+alias lf="eza -lf --color=always | grep -v /"
+alias lh="eza -dl .* --group-directories-first"
+alias ll="eza -al --group-directories-first"
+# alias lt="eza -al --sort=modified"
+lt() {
+    eza --tree --level $1
+}
