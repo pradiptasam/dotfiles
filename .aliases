@@ -14,3 +14,5 @@ alias meld="~/sw/meld/bin/meld"
 alias c="clear"
 
 alias enbl_spack="source /Users/k202170/sw/spack-sw/spack/share/spack/setup-env.sh; source /Users/k202170/sw/spack-sw/spack/share/spack/spack-completion.bash"
+
+alias lg="lazygit"
