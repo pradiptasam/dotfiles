@@ -2,6 +2,8 @@ alias lev6="ssh levante6"
 
 alias vim="nvim"
 alias vi="nvim"
+alias v="nvim"
+
 alias lev6="ssh levante6"
 
 # git aliases
@@ -16,3 +18,10 @@ alias c="clear"
 alias enbl_spack="source /Users/k202170/sw/spack-sw/spack/share/spack/setup-env.sh; source /Users/k202170/sw/spack-sw/spack/share/spack/spack-completion.bash"
 
 alias lg="lazygit"
+
+# Dirs
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
