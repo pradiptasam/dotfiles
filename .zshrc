@@ -205,7 +205,12 @@ _fzf_comprun() {
 
 # ----- Bat (better cat) -----
 
-export BAT_THEME=tokyonight_night
+if command -v bat >/dev/null 2>&1; then
+  export BAT_THEME=tokyonight_night
+else
+  echo "Bat is not installed"
+  # Define alternative configurations or leave it as default
+fi
 
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
