@@ -1,21 +1,34 @@
+# Check the value of the $HOST variable using pattern matching
+if [[ "$HOST" == allogin* ]]; then
+    echo "Setting configurations for allogin*"
+    # Define configurations for allogin*
+elif [[ "$HOST" == alamdlogin* ]]; then
+    echo "Setting configurations for alamdlogin*"
+    # Define configurations for alamdlogin*
+    alias enbl_spack="source /algpfs1/samanta/software/spack/share/spack/setup-env.sh; source /algpfs1/samanta/software/spack/share/spack/spack-completion.bash"
+    alias nvim="/algpfs1/samanta/software/spack/opt/spack/linux-sles15-zen/gcc-7.5.0/neovim-0.9.4-mohncdttsdgxpbhi6hrd26dl7p6o3qqx/bin/nvim"
+    alias lazygit="/algpfs1/samanta/software/spack/opt/spack/linux-sles15-zen/gcc-7.5.0/lazygit-0.41.0-pzpapypqlimyrl7xkdhvprcotb6slbv4/bin/lazygit"
+    alias tmux="/algpfs1/samanta/software/spack/opt/spack/linux-sles15-zen/gcc-7.5.0/tmux-3.4-y5pxwy2f7wszcnj7vtv464n7zqwyrhgd/bin/tmux"
+elif [[ "$HOST" == Pradiptas* ]]; then
+    alias enbl_spack="source /Users/k202170/sw/spack-sw/spack/share/spack/setup-env.sh; source /Users/k202170/sw/spack-sw/spack/share/spack/spack-completion.bash"
+    alias meld="~/sw/meld/bin/meld"
+else
+    echo "Setting default configurations"
+    # Define default configurations
+fi
+
 alias lev6="ssh levante6"
 
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
 
-alias lev6="ssh levante6"
-
 # git aliases
 alias gs="git status"
 alias ga="git add"
 alias gl="git log"
 
-alias meld="~/sw/meld/bin/meld"
-
 alias c="clear"
-
-alias enbl_spack="source /Users/k202170/sw/spack-sw/spack/share/spack/setup-env.sh; source /Users/k202170/sw/spack-sw/spack/share/spack/spack-completion.bash"
 
 alias lg="lazygit"
 
