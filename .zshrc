@@ -133,16 +133,21 @@ export PATH="/Users/k202170/.bin/remote/bin:$PATH"
 
 # ---- Eza (better ls) -----
 
-alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
-alias ld="eza -lD"
-alias lf="eza -lf --color=always | grep -v /"
-alias lh="eza -dl .* --group-directories-first"
-alias ll="eza -al --group-directories-first"
-# alias lt="eza -al --sort=modified"
-lt() {
-    eza --tree --level $1
-}
-
+# Check if eza is installed
+if command -v eza >/dev/null 2>&1; then
+  alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
+  alias ld="eza -lD"
+  alias lf="eza -lf --color=always | grep -v /"
+  alias lh="eza -dl .* --group-directories-first"
+  alias ll="eza -al --group-directories-first"
+  # alias lt="eza -al --sort=modified"
+  lt() {
+      eza --tree --level $1
+  }
+else
+  echo "Eza is not installed"
+  # Define alternative configurations or leave it as default
+fi
 # ---- FZF -----
 
 # Set up fzf key bindings and fuzzy completion
