@@ -44,11 +44,10 @@ config.foreground_text_hsb = {
     saturation = 1.0,
     brightness = 0.9,  -- default is 1.0
 }
--- config.freetype_load_target = "HorizontalLcd"
 config.freetype_load_flags = "FORCE_AUTOHINT|NO_AUTOHINT"
-config.freetype_load_target = "Light"
+config.freetype_load_target = "Normal"
+-- config.freetype_load_target = "HorizontalLcd"
 config.freetype_render_target = "HorizontalLcd"
-config.font_antialias = "None"
 
 -- config.background = {
 -- 		w.get_wallpaper(wallpapers_glob),
