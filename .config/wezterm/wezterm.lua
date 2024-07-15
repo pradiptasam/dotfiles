@@ -71,4 +71,12 @@ config.window_decorations = "RESIZE"
 --   font_size = 18,
 -- }
 
+config.keys = {
+  {
+    key = 'r',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.ReloadConfiguration,
+  },
+}
+
 return config
