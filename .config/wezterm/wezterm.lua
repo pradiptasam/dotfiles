@@ -30,14 +30,12 @@ local config = {}
 -- end
 
 -- For example, changing the color scheme:
--- config.color_scheme = 'Catppuccin Mocha'
-config.color_scheme = cs.get_color_scheme()
+config.color_scheme = 'Catppuccin Latte'
+-- config.color_scheme = cs.get_color_scheme()
 -- config.font = wezterm.font 'JetBrainsMono Nerd Font'
-config.font = wezterm.font 'MesloLGS Nerd Font'
 config.line_height = 1.0
 config.window_background_opacity = 0.95
 config.window_close_confirmation = 'NeverPrompt'
-config.font_size = 13
 config.hide_tab_bar_if_only_one_tab = true
 config.foreground_text_hsb = {
     hue = 1.0,
@@ -61,6 +59,17 @@ config.window_padding = {
 	bottom = 4,
 }
 
+config.font = wezterm.font 'MesloLGS Nerd Font'
+config.font_size = 12
+config.font_rules = {
+  {
+    font = wezterm.font{
+      family = "JetBrains Mono",
+      -- family = "MesloLGS NF",
+      weight = "ExtraBold",
+    }
+  }
+}
 config.adjust_window_size_when_changing_font_size = false
 config.debug_key_events = false
 config.enable_tab_bar = false
