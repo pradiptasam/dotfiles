@@ -220,3 +220,7 @@ else
   echo "Zoxide is not installed"
   # Define alternative configurations or leave it as default
 fi
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
