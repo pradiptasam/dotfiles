@@ -25,6 +25,7 @@ alias amd2="ssh alamdlogin2"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
+alias vimdiff="nvim -d"
 
 # git aliases
 alias gs="git status"
