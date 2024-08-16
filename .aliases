@@ -21,6 +21,8 @@ alias lev6="ssh levante6"
 alias fkf="ssh mz4"
 alias al2="ssh allogin2"
 alias amd2="ssh alamdlogin2"
+alias daint="ssh daint"
+alias ela="ssh ela"
 
 alias vim="nvim"
 alias vi="nvim"
