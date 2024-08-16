@@ -224,3 +224,9 @@ fi
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
+
+if [[ "$HOST" == Pradiptas* ]]; then
+  export DENO_INSTALL="/Users/k202170/.deno"
+  export PATH="$DENO_INSTALL/bin:$PATH"
+fi
+
