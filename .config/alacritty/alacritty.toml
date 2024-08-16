@@ -1,0 +1,34 @@
+live_config_reload = true
+
+[font]
+size = 14.0
+
+[font.normal]
+#family = "SFMono Nerd Font"
+family = "MesloLGS Nerd Font Mono"
+style = "Regular"
+
+[font.bold]
+family = "MesloLGS Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "MesloLGS Nerd Font Mono"
+style = "Italic"
+
+[font.bold_italic]
+family = "MesloLGS Nerd Font Mono"
+style = "Bold Italic"
+
+[ env ]
+TERM = "xterm-256color"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+opacity = 0.85
+startup_mode = "simplefullscreen"
+
+[window.padding]
+x = 10
+y = 10
