@@ -135,7 +135,8 @@ export PATH="/Users/k202170/.bin/remote/bin:$PATH"
 
 # Check if eza is installed
 if command -v eza >/dev/null 2>&1; then
-  alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
+  # alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
+  alias ls="eza --color=always -G --no-filesize --icons=always --no-time --no-user --no-permissions"
   alias ld="eza -lD"
   alias lf="eza -lf --color=always | grep -v /"
   alias lh="eza -dl .* --group-directories-first"
@@ -214,8 +215,7 @@ fi
 
 # ---- Zoxide (better cd) ----
 if command -v zoxide >/dev/null 2>&1; then
-  eval "$(zoxide init zsh)"
-  alias cd="z"
+  eval "$(zoxide init zsh --cmd cd)"
 else
   echo "Zoxide is not installed"
   # Define alternative configurations or leave it as default
@@ -230,3 +230,156 @@ if [[ "$HOST" == Pradiptas* ]]; then
   export PATH="$DENO_INSTALL/bin:$PATH"
 fi
 
+# unset  _mlshdbg;
+# # disable shell debugging for the run of this init file
+# if [ "${MODULES_SILENT_SHELL_DEBUG:-0}" = '1' ]; then
+#    # immediately disable debugging to echo the less number of line possible
+#    case "$-" in
+#       *v*x*) set +vx; _mlshdbg='vx' ;;
+#       *v*) set +v; _mlshdbg='v' ;;
+#       *x*) set +x; _mlshdbg='x' ;;
+#       *) _mlshdbg='' ;;
+#    esac;
+# fi;
+#
+# # define modules runtime quarantine configuration
+# #export MODULES_RUN_QUARANTINE='ENVVARNAME'
+#
+# # setup quarantine if defined
+# unset _mlre _mlIFS;
+# if [ -n "${IFS+x}" ]; then
+#    _mlIFS=$IFS;
+# fi;
+# IFS=' ';
+# for _mlv in ${=MODULES_RUN_QUARANTINE:-}; do
+#    if [ "${_mlv}" = "${_mlv##*[!A-Za-z0-9_]}" -a "${_mlv}" = "${_mlv#[0-9]}" ]; then
+#       if [ -n "$(eval 'echo ${'$_mlv'+x}')" ]; then
+#          _mlre="${_mlre:-}__MODULES_QUAR_${_mlv}='$(eval 'echo ${'$_mlv'}')' ";
+#       fi;
+#       _mlrv="MODULES_RUNENV_${_mlv}";
+#       _mlre="${_mlre:-}${_mlv}='$(eval 'echo ${'$_mlrv':-}')' ";
+#    fi;
+# done;
+# if [ -n "${_mlre:-}" ]; then
+#    _mlre="eval ${_mlre}__MODULES_QUARANTINE_SET=1 ";
+# fi;
+#
+# # define module command and surrounding initial environment (default value
+# # for MODULESHOME, MODULEPATH, LOADEDMODULES and parse of init config files)
+# _mlcode=$(${^^=_mlre:-}/usr/bin/tclsh '/opt/homebrew/Cellar/modules/5.5.0/libexec/modulecmd.tcl' zsh autoinit)
+# _mlret=$?
+#
+# # clean temp variables used to setup quarantine
+# if [ -n "${_mlIFS+x}" ]; then
+#    IFS=$_mlIFS;
+#    unset _mlIFS;
+# else
+#    unset IFS;
+# fi;
+# unset _mlre _mlv _mlrv
+#
+# # no environment alteration if the above autoinit command failed
+# if [ $_mlret -eq 0 ]; then
+#    eval "$_mlcode"
+#
+#    # setup FPATH to put module completion at hand in case zsh completion enabled
+#    # cannot be configured by autoinit as FPATH is not an environment variable
+#    if [[ ! ":$FPATH:" =~ ':/opt/homebrew/Cellar/modules/5.5.0/init/zsh-functions:' ]]; then
+#       FPATH="/opt/homebrew/Cellar/modules/5.5.0/init/zsh-functions${FPATH:+:}$FPATH"
+#    fi
+# fi
+#
+# unset _mlcode _mlret
+#
+# # restore shell debugging options if disabled
+# if [ -n "${_mlshdbg:-}" ]; then
+#    set -$_mlshdbg;
+#    unset _mlshdbg;
+# fi;
+#
+# source /opt/homebrew/opt/modules/init/zsh
+# unset  _mlshdbg;
+# # disable shell debugging for the run of this init file
+# if [ "${MODULES_SILENT_SHELL_DEBUG:-0}" = '1' ]; then
+#    # immediately disable debugging to echo the less number of line possible
+#    case "$-" in
+#       *v*x*) set +vx; _mlshdbg='vx' ;;
+#       *v*) set +v; _mlshdbg='v' ;;
+#       *x*) set +x; _mlshdbg='x' ;;
+#       *) _mlshdbg='' ;;
+#    esac;
+# fi;
+#
+# # define modules runtime quarantine configuration
+# #export MODULES_RUN_QUARANTINE='ENVVARNAME'
+#
+# # setup quarantine if defined
+# unset _mlre _mlIFS;
+# if [ -n "${IFS+x}" ]; then
+#    _mlIFS=$IFS;
+# fi;
+# IFS=' ';
+# for _mlv in ${=MODULES_RUN_QUARANTINE:-}; do
+#    if [ "${_mlv}" = "${_mlv##*[!A-Za-z0-9_]}" -a "${_mlv}" = "${_mlv#[0-9]}" ]; then
+#       if [ -n "$(eval 'echo ${'$_mlv'+x}')" ]; then
+#          _mlre="${_mlre:-}__MODULES_QUAR_${_mlv}='$(eval 'echo ${'$_mlv'}')' ";
+#       fi;
+#       _mlrv="MODULES_RUNENV_${_mlv}";
+#       _mlre="${_mlre:-}${_mlv}='$(eval 'echo ${'$_mlrv':-}')' ";
+#    fi;
+# done;
+# if [ -n "${_mlre:-}" ]; then
+#    _mlre="eval ${_mlre}__MODULES_QUARANTINE_SET=1 ";
+# fi;
+#
+# # define module command and surrounding initial environment (default value
+# # for MODULESHOME, MODULEPATH, LOADEDMODULES and parse of init config files)
+# _mlcode=$(${^^=_mlre:-}/usr/bin/tclsh '/opt/homebrew/Cellar/modules/5.5.0/libexec/modulecmd.tcl' zsh autoinit)
+# _mlret=$?
+#
+# # clean temp variables used to setup quarantine
+# if [ -n "${_mlIFS+x}" ]; then
+#    IFS=$_mlIFS;
+#    unset _mlIFS;
+# else
+#    unset IFS;
+# fi;
+# unset _mlre _mlv _mlrv
+#
+# # no environment alteration if the above autoinit command failed
+# if [ $_mlret -eq 0 ]; then
+#    eval "$_mlcode"
+#
+#    # setup FPATH to put module completion at hand in case zsh completion enabled
+#    # cannot be configured by autoinit as FPATH is not an environment variable
+#    if [[ ! ":$FPATH:" =~ ':/opt/homebrew/Cellar/modules/5.5.0/init/zsh-functions:' ]]; then
+#       FPATH="/opt/homebrew/Cellar/modules/5.5.0/init/zsh-functions${FPATH:+:}$FPATH"
+#    fi
+# fi
+#
+# unset _mlcode _mlret
+#
+# # restore shell debugging options if disabled
+# if [ -n "${_mlshdbg:-}" ]; then
+#    set -$_mlshdbg;
+#    unset _mlshdbg;
+# fi;
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+. "$HOME/.local/bin/env"
