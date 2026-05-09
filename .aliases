@@ -9,20 +9,26 @@ elif [[ "$HOST" == alamdlogin* ]]; then
     alias nvim="/algpfs1/samanta/software/spack/opt/spack/linux-sles15-zen/gcc-7.5.0/neovim-0.9.4-mohncdttsdgxpbhi6hrd26dl7p6o3qqx/bin/nvim"
     alias lazygit="/algpfs1/samanta/software/spack/opt/spack/linux-sles15-zen/gcc-7.5.0/lazygit-0.41.0-pzpapypqlimyrl7xkdhvprcotb6slbv4/bin/lazygit"
     alias tmux="/algpfs1/samanta/software/spack/opt/spack/linux-sles15-zen/gcc-7.5.0/tmux-3.4-y5pxwy2f7wszcnj7vtv464n7zqwyrhgd/bin/tmux"
-elif [[ "$HOST" == Pradiptas* ]]; then
+elif [[ "$HOST" == Mac* ]]; then
     alias enbl_spack="source /Users/k202170/sw/spack-sw/spack/share/spack/setup-env.sh; source /Users/k202170/sw/spack-sw/spack/share/spack/spack-completion.bash"
     alias meld="~/sw/meld/bin/meld"
+    export PATH=$PATH:/Users/k202170/Library/Python/3.9/bin
+    load_llvm() {
+        export PATH=/Volumes/sw/llvm/llvm-project/build/bin:$PATH
+        export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/Volumes/sw/llvm/llvm-project/build/lib
+    }
 else
     echo "Setting default configurations"
     # Define default configurations
 fi
 
-alias lev6="ssh levante6"
+alias lev5="ssh levante5"
 alias fkf="ssh mz4"
 alias al2="ssh allogin2"
 alias amd2="ssh alamdlogin2"
 alias daint="ssh daint"
 alias ela="ssh ela"
+alias novian=" ssh arimantas_stasaitis@172.29.171.32"
 
 alias vim="nvim"
 alias vi="nvim"
