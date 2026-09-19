@@ -1,0 +1,197 @@
+# herdr configuration — translated from ~/dotfiles/.tmux.conf
+# Full defaults: `herdr --default-config`   Reference: https://herdr.dev/docs/config-reference/
+# Apply changes to the running server: `herdr server reload-config` (or prefix+r, see below)
+
+onboarding = false
+
+[theme]
+# tmux: @themepack 'powerline/default/cyan'
+name = "catppuccin"
+auto_switch = true
+dark_name = "catppuccin"
+light_name = "catppuccin-latte"
+
+[keys]
+# tmux: set -g prefix C-a
+prefix = "ctrl+a"
+
+# tmux: bind . split-window -h   (side by side)
+#       bind - split-window -v   (stacked)
+split_vertical = "prefix+."
+split_horizontal = "prefix+minus"
+
+# tmux: bind r source-file ~/.tmux.conf
+# Default resize_mode lives on prefix+r, so it moves to prefix+shift+r.
+reload_config = "prefix+r"
+resize_mode = "prefix+shift+r"
+
+# tmux: bind -r h/j/k/l resize-pane -L/-D/-U/-R 5
+# One step per press. For repeated resizing use resize_mode (prefix+shift+r), then h/j/k/l.
+resize_pane_left = "prefix+h"
+resize_pane_down = "prefix+j"
+resize_pane_up = "prefix+k"
+resize_pane_right = "prefix+l"
+
+# tmux: vim-tmux-navigator (ctrl+h/j/k/l without prefix)
+# Plain ctrl+h/j/k/l would be stolen from the shell and vim, so herdr's vetted
+# prefix-free family ctrl+alt is used. A vim-tmux-navigator port exists for
+# seamless ctrl+h/j/k/l across nvim splits: github.com/paulbkim-dev/vim-herdr-navigation
+focus_pane_left = "ctrl+alt+h"
+focus_pane_down = "ctrl+alt+j"
+focus_pane_up = "ctrl+alt+k"
+focus_pane_right = "ctrl+alt+l"
+
+# tmux: bind -r m resize-pane -Z
+zoom = "prefix+m"
+
+# Workspace (space) navigation. Mirrors tmux's prefix ( / ) for session switching.
+# Numbers: prefix+alt+1..9 jumps to workspace N (prefix+1..9 stays on tabs).
+# Not shift+digits: WezTerm sends those as plain characters unless
+# enable_kitty_keyboard is on, and herdr's fallback assumes a US layout, so on
+# QWERTZ shift+2 (") and shift+3 (§) match nothing and shift+6 (&) jumps to 7.
+# Use the LEFT option key: WezTerm sends it as alt, right option composes characters.
+previous_workspace = "prefix+("
+next_workspace = "prefix+)"
+switch_workspace = "prefix+alt+1..9"
+
+# tmux: mode-keys vi; copy-mode-vi v = begin-selection, y = copy-selection
+# herdr copy mode is vi-style by default (h/j/k/l, v to select, y to yank, / to search).
+copy_mode = "prefix+["
+
+# tmux-floax: @floax-bind 'F' -> plugin herdr-floax (github.com/Tyru5/herdr-floax).
+# One persistent floating shell per workspace: open -> reveal -> dismiss.
+# Size and hint text live in ~/.config/herdr/plugins/config/herdr-floax/floax.conf.
+[[keys.command]]
+key = "prefix+shift+f"
+type = "plugin_action"
+command = "herdr-floax.toggle"
+description = "toggle floating shell (floax)"
+
+# Plugin herdr-tiny-fingers (github.com/hotchpotch/herdr-tiny-fingers), tmux-fingers port.
+# Hints appear on paths, URLs, hashes and similar in the focused pane; type a hint to copy.
+[[keys.command]]
+key = "prefix+f"
+type = "plugin_action"
+command = "hotchpotch.herdr-tiny-fingers.open"
+description = "fingers: hint-copy visible text"
+
+# Plugin herdr-pane-layouts (github.com/iurysza/herdr-pane-layouts).
+# prefix+space mirrors tmux next-layout; resize actions are skipped in favour of the
+# native resize_pane_* bindings above.
+[[keys.command]]
+key = "prefix+space"
+type = "plugin_action"
+command = "layouts.cycle"
+description = "cycle pane layouts (even-v, even-h, main-left, main-top, tiled)"
+
+[[keys.command]]
+key = "prefix+shift+e"
+type = "plugin_action"
+command = "layouts.equalize"
+description = "equalize panes into columns"
+
+# Plugin herdr-reviewr (github.com/persiyanov/herdr-reviewr): diff review pane, comments
+# can be sent back to the agent. Its own config (placement, editor) is in
+# ~/.config/herdr/plugins/config/persiyanov.reviewr/config.toml.
+[[keys.command]]
+key = "prefix+i"
+type = "plugin_action"
+command = "persiyanov.reviewr.toggle"
+description = "toggle reviewr diff pane"
+
+# File browsing. yazi floats via herdr's popup type; Enter opens files in $EDITOR.
+[[keys.command]]
+key = "prefix+y"
+type = "popup"
+command = "yazi"
+width = "85%"
+height = "85%"
+description = "yazi file manager (floating)"
+
+# Plugin herdr-file-viewer (github.com/smarzban/herdr-file-viewer): git-aware read-only
+# tree + preview (diff / rendered markdown / highlighted code) in a split. f fuzzy-find,
+# e opens in nvim, ] [ next/prev changed file, ? help. Optional renderers: glow, delta, bat.
+[[keys.command]]
+key = "prefix+t"
+type = "plugin_action"
+command = "herdr-file-viewer.open-file-viewer"
+description = "file viewer tree in a split"
+
+# Plugin: vim-herdr-navigation (github.com/paulbkim-dev/vim-herdr-navigation)
+# vim-tmux-navigator port: ctrl+h/j/k/l moves between nvim splits and herdr panes.
+# Shadows readline ctrl+l (clear) and ctrl+k (kill line) in shells, as with tmux.
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "vim-herdr-navigation.left"
+description = "navigate left (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "vim-herdr-navigation.down"
+description = "navigate down (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "vim-herdr-navigation.up"
+description = "navigate up (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "vim-herdr-navigation.right"
+description = "navigate right (vim/herdr)"
+
+# Plugin: herdr-lazygit (github.com/Crokily/herdr-lazygit)
+# prefix+g is herdr's goto picker and prefix+shift+g is new_worktree. Plain letters
+# are used because alt (option) chords are unreliable on macOS and ctrl+g is taken
+# system-wide by Grammarly. Toggles: closed -> open, unfocused -> focus, focused -> close.
+# Floating lazygit via herdr's popup type (the plugin only does split or tab;
+# its 42-column sidebar is unreadable once the tab is already split).
+[[keys.command]]
+key = "prefix+u"
+type = "popup"
+command = "lazygit"
+width = "85%"
+height = "85%"
+description = "lazygit floating"
+
+[[keys.command]]
+key = "prefix+shift+u"
+type = "plugin_action"
+command = "herdr-lazygit.open-tab"
+description = "lazygit in its own tab"
+
+[ui]
+# tmux: set -g mouse on
+mouse_capture = true
+# tmux: unbind -T copy-mode-vi MouseDragEnd1Pane
+# Keep the mouse selection instead of copying+clearing as soon as the drag ends.
+copy_on_select = false
+accent = "cyan"
+# tmux: base-index 1 / pane-base-index 1 — herdr tabs are already 1..9 under prefix+1..9.
+
+# tmux-style status line: tab row at the bottom, hostname and clock on the right.
+# Tab labels are name-only (no window numbers or powerline glyphs; not configurable).
+tab_bar_position = "bottom"
+tab_bar_right = [
+  { type = "zoom" },
+  { type = "hostname" },
+  { type = "datetime", format = "%a %d %b  %H:%M" },
+]
+tab_bar_right_separator = " │ "
+
+[ui.toast]
+# In-app popups; needed for tiny-fingers "copied" feedback, also shows agent notifications.
+delivery = "herdr"
+
+[session]
+# tmux-resurrect / tmux-continuum: the herdr server is persistent, so panes
+# survive detach. This restores agent panes after a server restart.
+resume_agents_on_restore = true
+
+[experimental]
+# tmux-resurrect @resurrect-capture-pane-contents 'on'
+pane_history = true
