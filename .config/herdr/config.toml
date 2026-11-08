@@ -44,6 +44,9 @@ focus_pane_right = "ctrl+alt+l"
 # tmux: bind -r m resize-pane -Z
 zoom = "prefix+m"
 
+# tmux default: prefix d detaches. herdr's default prefix+q is kept as well.
+detach = ["prefix+q", "prefix+d"]
+
 # Workspace (space) navigation. Mirrors tmux's prefix ( / ) for session switching.
 # Numbers: prefix+alt+1..9 jumps to workspace N (prefix+1..9 stays on tabs).
 # Not shift+digits: WezTerm sends those as plain characters unless
@@ -167,9 +170,8 @@ description = "lazygit in its own tab"
 [ui]
 # tmux: set -g mouse on
 mouse_capture = true
-# tmux: unbind -T copy-mode-vi MouseDragEnd1Pane
-# Keep the mouse selection instead of copying+clearing as soon as the drag ends.
-copy_on_select = false
+# Copy the mouse selection as soon as the drag ends (Cmd+C is not forwarded by WezTerm).
+copy_on_select = true
 accent = "cyan"
 # tmux: base-index 1 / pane-base-index 1 — herdr tabs are already 1..9 under prefix+1..9.
 

@@ -74,7 +74,7 @@ project, window -> **tab**, pane -> pane.
 
 | Key | Action |
 |---|---|
-| `prefix+q` | detach, everything keeps running (`herdr` reattaches) |
+| `prefix+d` or `prefix+q` | detach, everything keeps running (`herdr` reattaches); tmux `prefix d` |
 | `prefix+r` | reload config (tmux `prefix r`) |
 | `prefix+s` | settings |
 | `prefix+?` | keybinding help |
